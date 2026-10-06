@@ -16,7 +16,7 @@ val local = Properties().apply {
     val archivo = rootProject.file("local.properties")
     if (archivo.exists()) archivo.inputStream().use { load(it) }
 }
-val apiUrl: String = local.getProperty("avisos.api") ?: "http://10.0.2.2:8000/api/"
+val apiUrl: String = local.getProperty("avisos.api") ?: "https://product-dollar-shift-attorneys.trycloudflare.com/api/"
 
 android {
     namespace = "mx.tec.avisos"
@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.okhttp.sse)
     implementation(libs.androidx.work.runtime)
+    // Imágenes: Coil las baja y las pinta, con el mismo cliente que todo lo demás
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     // Hilt (Práctica 9): la librería, el generador de código, y sus piezas para ViewModel y WorkManager
     implementation(libs.hilt.android)
